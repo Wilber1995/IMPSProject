@@ -15,7 +15,12 @@
             <tr>
                 <th scope="col">ID profesor</th>
                 <th scope="col">Nombres </th>
-                <th scope="col">Opciones</th>
+                <th scope="col">Apellidos </th>
+                <th scope="col">Fecha Nacimiento </th>
+                <th scope="col">Profesion </th>
+                <th scope="col">Genero </th>
+                <th scope="col">Email</th>
+                <th scope="col">Opciones </th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +28,11 @@
             <tr>
                 <th scope="row">{{idprofesor}}</th>
                 <td>{{nombre}}</td>
+                <td>{{apellido}}</td>
+                <td>{{formatDate fecha_nacimiento "DD/MM/YYYY"}}</td>
+                <td>{{profesion}}</td>
+                <td>{{genero}}</td>
+                <td>{{email}}</td>
 
                 <td>
                     <a class="btn btn-primary text-white" href="/profesores/modificar/{{idprofesor}}">Modificar</a>

@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const queries = require('../repositories/ProfesorRepository');
 
-// Endpoint para mostrar todos los carreras
+// Endpoint para mostrar todos los profesores
 router.get('/', async (request, response) => {
     const profesores = await queries.obtenerTodosLosProfesores();
-
-     response.render('profesores/listado', {profesores: profesores}); // Mostramos el listado de profesores
+    //const fecha_nacimiento = profesores.fecha_nacimiento.toISOString().split('T')[0];
+     response.render('profesores/listado', {profesores:profesores}); // Mostramos el listado de profesores
 });
 
 // Endpoint que permite mostrar el formulario para agregar una nueva carrera
@@ -27,11 +27,12 @@ router.get('/modificar/:idprofesor', async(request, response) => {
 });
 
 
-// Enpoint que permite realizar la modificacion de una carrera
+// Enpoint que permite realizar la modificacion de un profesor
 router.post('/modificar/:id', async(request, response) => {
     const { id } = request.params;
-    const { idprofesor, nombre } = request.body;
-    const nuevoProfesor = { idprofesor, nombre};
+    const { idprofesor, nombre, apellido, fecha_nacimiento, profesion, genero, email } = request.body;
+    //const fecha_nacimiento = fechaSQL.toISOString().split('T')[0];
+    const nuevoProfesor = { idprofesor, nombre, apellido, fecha_nacimiento, profesion, genero, email};
 
     const actualizacion = await queries.actualizarProfesor(id, nuevoProfesor);
 
@@ -39,11 +40,12 @@ router.post('/modificar/:id', async(request, response) => {
 
 });
 
-// Endpoint para agregar una carrera
+// Endpoint para agregar un profesor
 router.post('/agregar', async(request, response) => {
     
-    const { idprofesor, nombre } = request.body;
-    const nuevoProfesor = { idprofesor, nombre};
+    const { idprofesor, nombre, apellido, fecha_nacimiento, profesion, genero, email } = request.body;
+    //const fecha_nacimiento = fechaSQL.toISOString().split('T')[0];
+    const nuevoProfesor = { idprofesor, nombre, apellido, fecha_nacimiento, profesion, genero, email};
     
     // Se trata de una insercion
     const resultado = await queries.insertarProfesor(nuevoProfesor);
