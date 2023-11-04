@@ -1,9 +1,4 @@
-.btn-asignar {
-    background-color: rgb(221, 173, 71);
-    color: white;
-}
-
-.btn-detalles {
-    background-color: rgb(218, 28, 177);
-    color: white;
+body {
+    background: #f5f6fa;
+    overflow: hidden;
 }

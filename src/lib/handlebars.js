@@ -5,11 +5,6 @@ const moment = require('moment');
 helpers.registerHelper('eq', function (a, b, options) {
   return a === b ? options.fn(this) : options.inverse(this); // Utlizamos un if ternario
 });
-helpers.registerHelper('isEquals', function (a, b) {
-
-    return a === b;
-  
-  });
 
 // Helper que permite darle formato a una fecha (lo estamos utilizando como un pipe)
 helpers.registerHelper('formatDate', function(date, format) {
@@ -22,50 +17,6 @@ helpers.registerHelper('convertDate', function(fecha) {
   const month = String(date.getMonth() + 1).padStart(2, '0'); // Se le suma 1 al mes, porque el getMonth() cuenta desde 0.
   const day = String(date.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
-});
-
-helpers.registerHelper('ifCond', function (v1, operator, v2, options) {
-
-  switch (operator) {
-
-      case '==':
-
-          return (v1 == v2) ? options.fn(this) : options.inverse(this);
-
-      case '===':
-
-          return (v1 === v2) ? options.fn(this) : options.inverse(this);
-
-      case '!=':
-
-          return (v1 != v2) ? options.fn(this) : options.inverse(this);
-
-      case '!==':
-
-          return (v1 !== v2) ? options.fn(this) : options.inverse(this);
-
-      case '<':
-
-          return (v1 < v2) ? options.fn(this) : options.inverse(this);
-
-      case '<=':
-
-          return (v1 <= v2) ? options.fn(this) : options.inverse(this);
-
-      case '>':
-
-          return (v1 > v2) ? options.fn(this) : options.inverse(this);
-
-      case '>=':
-
-          return (v1 >= v2) ? options.fn(this) : options.inverse(this);
-
-      default:
-
-          return options.inverse(this);
-
-  }
-
 });
 
 module.exports = helpers;
