@@ -1,0 +1,29 @@
+<div class="container p-4">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>detalle grupos</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 mt-4">
+        <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID GRUPO ESTUDIANTE</th>
+                <th scope="col">ID GRUPO</th>
+                <th scope="col">ID ESTUDIANTE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each grupo_estudiantes}}
+            <tr>
+                <th scope="row">{{idgrupoestudiante}}</th>
+                <td>{{idgrupo}}</td>
+                <td>{{idestudiante}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    </div>
+</div>

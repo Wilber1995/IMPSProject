@@ -3,14 +3,11 @@ const pool = require("../config/databaseController");
 module.exports = {
   obtenerTodosLosGrupos: async () => {
     try {
-      const result = await pool.query("SELECT * FROM grupos");
+      const result = await pool.query("SELECT g.idgrupo, g.num_grupo, g.anio, g.ciclo, m.materia, p.nombre, m.idmateria, p.idprofesor FROM grupos g, materias m, profesores p WHERE g.idmateria=m.idmateria AND g.idprofesor=p.idprofesor;");
       return result;
     } catch (error) {
       console.error(
-        "Ocurrió un problema al consultar la lista de grupos: ",
-        error
-      );
-      throw error;
+        "Ocurrió un problema al consultar la lista de grupos: ",error);
     }
   },
 
@@ -66,7 +63,7 @@ module.exports = {
   },
   obtenerTodosLosGrupos: async () => {
     try {
-      const result = await pool.query("SELECT * FROM grupos");
+      const result = await pool.query("SELECT g.idgrupo, g.num_grupo, g.anio, g.ciclo, m.materia, p.nombre, m.idmateria, p.idprofesor FROM grupos g, materias m, profesores p WHERE g.idmateria=m.idmateria AND g.idprofesor=p.idprofesor;");
       return result;
     } catch (error) {
       console.error(
@@ -105,4 +102,17 @@ module.exports = {
       throw error;
     }
   },
+
+  // Asignar grupo
+  asignarGrupo: async (asignacion) => {
+    try {
+      const result = await pool.query("INSERT INTO grupo_estudiantes SET ? ",
+        asignacion);
+      console.log('resultado: ', result)
+      return result;
+    } catch (error) {
+      console.log('Ocurrió un problema con asignar grupo ', error);
+    }
+  },
+
 };
